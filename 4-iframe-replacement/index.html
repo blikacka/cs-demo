@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--    LIT-->
+    <script type="module" src="counter-lit.js"></script>
+
+<!--    REACT-->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src='https://unpkg.com/babel-standalone@6.26.0/babel.js'></script>
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.5em;
+            padding-left: 0.5em;
+        }
+    </style>
+</head>
+<body>
+
+<!--LIT-->
+    <h2>LIT</h2>
+    <div style="display: flex; flex-direction: row; flex-wrap: wrap; align-items: center;">
+        <div>
+            <counter-xy name="1"></counter-xy>
+        </div>
+
+        <div>
+            <counter-xy name="2"></counter-xy>
+        </div>
+
+        <div>
+            <counter-xy name="3"></counter-xy>
+        </div>
+    </div>
+
+<!--REACT-->
+    <h2>REACT</h2>
+    <div id="react-counter"></div>
+    <script src="counter-react.js" type="text/babel"></script>
+
+</body>
+</html>

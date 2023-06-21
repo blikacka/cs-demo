@@ -3,26 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <script>
+        function fetchData(url, element) {
+            const request = new XMLHttpRequest()
+
+            request.onreadystatechange = function() {
+                if (this.readyState === 4 && this.status === 200) {
+                    document.getElementById(element).innerHTML = this.responseText
+                }
+            }
+
+            request.open('GET', url, true)
+            request.send()
+        }
+
+        function loadData() {
+            // fetchData('viewer-js/#../files/demo-pdf.pdf', 'pdf-demo')
+            // fetchData('docx.html?link=files/demo-docx.docx', 'docx-demo')
+            // fetchData('xlsx.html?link=files/demo-xlsx.xlsx', 'xlsx-demo')
+        }
+    </script>
 </head>
-<body>
+<body onload="loadData()">
     <table>
         <tbody>
             <tr>
                 <td>PDF</td>
                 <td>
-                    <iframe src="viewer-js/#../files/demo-pdf.pdf" width="400" height="300" allowfullscreen webkitallowfullscreen></iframe>
+                    <embed src="viewer-js/#../files/demo-pdf.pdf" width="400" height="300" />
                 </td>
             </tr>
             <tr>
                 <td>DOCX</td>
                 <td>
-                    <iframe src="docx.html?link=files/demo-docx.docx" width="400" height="300" allowfullscreen webkitallowfullscreen></iframe>
+                    <embed src="docx.html?link=files/demo-docx.docx" width="400" height="300" />
                 </td>
             </tr>
             <tr>
                 <td>XLSX</td>
                 <td>
-                    <iframe src="xlsx.html?link=files/demo-xlsx.xlsx" width="400" height="300" allowfullscreen webkitallowfullscreen></iframe>
+                    <embed src="xlsx.html?link=files/demo-xlsx.xlsx" width="400" height="300" />
                 </td>
             </tr>
         </tbody>

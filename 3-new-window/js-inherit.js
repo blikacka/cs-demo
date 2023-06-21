@@ -61,10 +61,12 @@ function asyncLink() {
             link.href = `redirect.html?link=${btoa(JSON.parse(this.responseText).link)}`
             link.setAttribute('target', '_blank')
             link.setAttribute('class', 'virtual-link')
+            link.innerText = 'xxx'
             document.body.appendChild(link)
-            link.click()
-
-            document.querySelectorAll('.virtual-link').forEach(el => el.remove())
+            setTimeout(function () {
+                link.click()
+                document.querySelectorAll('.virtual-link').forEach(el => el.remove())
+            })
         }
     }
 

@@ -56,12 +56,18 @@ $('#async-window-open').on('click', function () {
     $.ajax({
         url: 'https://astrumq.com/url-demo-generator.php',
         success: function(result){
+            // Vytvoří se virtuální link na stránce
             $('body').append(`<a href="redirect.html?link=${btoa(result.link)}" target="_blank" rel="noopener noreferrer" class="virtual-link">xxx</a>`)
 
+            // Reference na vytvořený virtuální link
             const linkElement = $('.virtual-link')
 
-            linkElement[0].click()
-            linkElement.remove()
+            // setTimeout běží v hlavním vlákně aplikace, takže se obsah provede nezávisle na změněném kontextu
+            // https://stackoverflow.com/a/70463940
+            setTimeout(() => {
+                linkElement[0].click()
+                linkElement.remove()
+            })
         },
     })
 })
