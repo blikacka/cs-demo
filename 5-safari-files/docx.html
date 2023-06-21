@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOCX</title>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/promise-polyfill/dist/polyfill.min.js"></script>
+    <script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>
+    <script src="docx/docx-preview.min.js"></script>
+
+    <script>
+        let params = new URL(document.location).searchParams
+        const link = params.get('link')
+
+        jQuery.ajax({
+            url: link,
+            cache: false,
+            xhr: function () {// Seems like the only way to get access to the xhr object
+                const xhr = new XMLHttpRequest()
+                xhr.responseType = 'blob'
+                return xhr
+            },
+            success: function(data){
+                const options = {
+                    className: 'docx',
+                    inWrapper: true,
+                    ignoreWidth: true,
+                    ignoreHeight: true,
+                    ignoreFonts: false,
+                    breakPages: true,
+                    ignoreLastRenderedPageBreak: true,
+                    experimental: false,
+                    trimXmlDeclaration: true,
+                    useBase64URL: false,
+                    useMathMLPolyfill: false,
+                    showChanges: false,
+                    debug: false,
+                }
+
+                docx.renderAsync(data, $('#container')[0], null, options)
+            },
+        })
+    </script>
+</head>
+<body>
+
+<div id="container" style="width: 100%; height: 100%; border: 1px solid black"></div>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="localforage.min.js"></script>
+
+    <script>
+        function setCounter(type) {
+            localforage.getItem('counter')
+                .then(value => (
+                    localforage
+                        .setItem('counter', type === 'increase' ? (Number(value || 0) + 1) : (Number(value || 0) - 1)))
+                        .then(() => printCounter())
+                )
+        }
+
+        function printCounter() {
+            localforage.getItem('counter').then(value => document.getElementById('counter').innerHTML = String(value || 0))
+        }
+    </script>
+</head>
+<body onload="printCounter()">
+    <button onclick="setCounter('increase')">
+        Zvětšit číslo
+    </button>
+    <button onclick="setCounter('decrease')">
+        Zmenšit číslo
+    </button>
+
+    <div id="counter"></div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        const remoteUrl = 'https://example.com/'
+    </script>
+
+    <script src="js-inherit.js"></script>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th>POPIS</th>
+            <th>AKCE</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>
+                window.open() - normal
+            </td>
+            <td>
+                <button onclick="windowOpenClassic()">
+                    NORMALNÍ JS
+                </button>
+
+                <button id="classic-window-open">
+                    JQUERY
+                </button>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                nové okno pomocí virtuálního linku
+            </td>
+            <td>
+                <button onclick="linkedOpenLink()">
+                    NORMALNÍ JS
+                </button>
+                <button id="linked-window-open">
+                    JQUERY
+                </button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                window.open() - redirect
+            </td>
+            <td>
+                <button onclick="windowOpenRedirect()">
+                    NORMALNÍ JS
+                </button>
+
+                <button id="redirected-window-open">
+                    JQUERY
+                </button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                kombinace - redirect + virtualní link
+            </td>
+            <td>
+                <button onclick="redirectedLinkedOpenLink()">
+                    NORMALNÍ JS
+                </button>
+
+                <button id="redirected-linked-window-open">
+                    JQUERY
+                </button>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                asynchronní získání URL
+            </td>
+            <td>
+                <button onclick="asyncLink()">
+                    NORMALNÍ JS
+                </button>
+
+                <button id="async-window-open">
+                    JQUERY
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script src="js-jquery.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+
+    <script>
+        let params = new URL(document.location).searchParams
+        const link = params.get('link')
+
+        setTimeout(function () {
+            window.location.href = atob(link)
+        }, 2000)
+    </script>
+</head>
+<body>
+    Redirecting...
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://js.sentry-cdn.com/0b7509becf45450e8987c163a17e2005.min.js" crossorigin="anonymous"></script>
+    <script src="https://browser.sentry-cdn.com/7.55.2/bundle.tracing.replay.min.js" integrity="sha384-gcN4PI+eloXUU+AVUgV5gJT83csMy9XzHmru5hCpeLG74/tINGdKjYdz6sDkMYZv" crossorigin="anonymous"></script>
+
+    <script>
+        // https://docs.sentry.io/platforms/javascript/
+        Sentry.onLoad(function () {
+            Sentry.init({
+                dsn: "https://0b7509becf45450e8987c163a17e2005@o4505396616364032.ingest.sentry.io/4505396622262272",
+                integrations: [
+                    new Sentry.BrowserTracing({
+                        // Set `tracePropagationTargets` to control for which URLs distributed tracing should be enabled
+                        tracePropagationTargets: ['localhost', /^https:\/\/csas-demo\.local/, /https:\/\/tomr130\.sg-host\.com/],
+                    }),
+                    new Sentry.Replay(),
+                ],
+                // Performance Monitoring
+                tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
+                // Session Replay
+                replaysSessionSampleRate: 0.1, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
+                replaysOnErrorSampleRate: 1.0, // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
+            });
+        })
+
+        function captureMessage() {
+            Sentry.captureMessage('Testovací zpráva')
+        }
+    </script>
+</head>
+<body>
+    <button onclick="undefinedFunction()">
+        Error - undefinedFunction()
+    </button>
+
+    <button onclick="captureMessage()">
+        Info - Sentry.captureMessage
+    </button>
+</body>
+</html>
