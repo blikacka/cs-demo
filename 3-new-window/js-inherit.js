@@ -2,7 +2,7 @@
  * Funkce se snaží provolat klasický window.open() na nové záložce
  */
 function windowOpenClassic() {
-    window.open(remoteUrl, '_blank')
+    window.open(remoteUrl, '_blank', 'noopener noreferrer')
 }
 
 /**
@@ -27,7 +27,7 @@ function linkedOpenLink() {
  * - výlsedná URL adresa je kódovaná pomocí base64 pro opravení problémových odkazů
  */
 function windowOpenRedirect() {
-    window.open(`redirect.html?link=${btoa(remoteUrl)}`, '_blank')
+    window.open(`redirect.html?link=${btoa(remoteUrl)}`, '_blank', 'noopener noreferrer')
 }
 
 /**

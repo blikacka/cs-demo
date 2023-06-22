@@ -4,7 +4,7 @@ const $ = jQuery
  * Po kliku na tlačítko s id=classic-window-open se pokusí otevřít systém novou stránku pomocí window.open() na novém tabu
  */
 $('#classic-window-open').on('click', function () {
-    window.open(remoteUrl, '_blank')
+    window.open(remoteUrl, '_blank', 'noopener noreferrer')
 })
 
 /**
@@ -29,7 +29,7 @@ $('#linked-window-open').on('click', function () {
  * - výlsedná URL adresa je kódovaná pomocí base64 pro opravení problémových odkazů
  */
 $('#redirected-window-open').on('click', function () {
-    window.open(`redirect.html?link=${btoa(remoteUrl)}`, '_blank')
+    window.open(`redirect.html?link=${btoa(remoteUrl)}`, '_blank', 'noopener noreferrer')
 })
 
 /**
